@@ -14,5 +14,5 @@ Then use in your app.
 
 ```swift
 import SwiftExec
-let output = swiftExec("/bin/echo", "relax", "we", "need", "some", "information", "first")
+let output = swiftExec("/bin/echo", "relax", "i’ll", "need", "some", "information", "first")
 ```
