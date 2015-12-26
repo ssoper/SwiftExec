@@ -6,7 +6,7 @@
 
 import Foundation
 
-public func swiftExec(cmd, cmdArgs: String...) -> String {
+public func swiftExec(cmd: String, cmdArgs: String...) -> String {
     print("STEP 1")
 
     #if os(Linux)
