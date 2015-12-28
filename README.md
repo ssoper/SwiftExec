@@ -7,7 +7,7 @@ Cross-platform library that lets you execute a shell command from Swift and capt
 Add to your Package.swift.
 
 ```swift
-    .Package(url: "https://github.com/ssoper/SwiftExec.git", majorVersion: 0, minor: 1)
+    .Package(url: "https://github.com/ssoper/SwiftExec.git", versions: Version(0,0,1)..<Version(0,1,0))
 ```
 
 Then use in your app.
