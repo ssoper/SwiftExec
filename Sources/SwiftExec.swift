@@ -6,11 +6,12 @@
 
 import Foundation
 
-public func swiftExec(cmd: String, cmdArgs: String...) -> String {
+public func swiftExec(cmdWithArgs: String...) -> String {
+    let cmd = cmdWithArgs.removeAtIndex(0)
 
     #if os(Linux)
         var output = ""
-        let joinedArgs = cmdArgs.joinWithSeparator(" ")
+        let joinedArgs = cmdWithArgs.joinWithSeparator(" ")
         let fullCmd = "\(cmd) \(joinedArgs)"
         let fp = popen(fullCmd, "r")
         var buf = Array<CChar>(count: 128, repeatedValue: 0)
@@ -25,7 +26,7 @@ public func swiftExec(cmd: String, cmdArgs: String...) -> String {
     #else
         let task = NSTask()
         task.launchPath = cmd
-        task.arguments = cmdArgs
+        task.arguments = cmdWithArgs
 
         let pipe = NSPipe()
         task.standardOutput = pipe
