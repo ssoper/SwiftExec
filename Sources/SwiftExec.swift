@@ -6,7 +6,8 @@
 
 import Foundation
 
-public func swiftExec(cmdWithArgs: String...) -> String {
+public func swiftExec(fullCmd: String...) -> String {
+    var cmdWithArgs = fullCmd
     let cmd = cmdWithArgs.removeAtIndex(0)
 
     #if os(Linux)
