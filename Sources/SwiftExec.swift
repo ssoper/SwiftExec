@@ -6,6 +6,10 @@
 
 import Foundation
 
+public enum SwiftExecError: ErrorType {
+    case NotFound(String)
+}
+
 public func swiftExec(fullCmd: String...) -> String {
     var cmdWithArgs = fullCmd
     let cmd = cmdWithArgs.removeAtIndex(0)
@@ -37,4 +41,24 @@ public func swiftExec(fullCmd: String...) -> String {
         let output = String(data: data, encoding: NSUTF8StringEncoding)
         return output!
     #endif
+}
+
+public func which(cmd: String) throws -> String {
+    let result = swiftExec("/usr/bin/which", cmd)
+    let strLen = result.characters.count
+
+    if strLen == 0 {
+        throw SwiftExecError.NotFound("\(cmd) not found")
+    }
+
+    var trimmed = ""
+    var index = 0
+    for c in result.characters {
+        if index < strLen-1 {
+            trimmed.append(c)
+            index++
+        }
+    }
+
+    return trimmed
 }
