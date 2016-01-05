@@ -56,7 +56,7 @@ public func which(cmd: String) throws -> String {
     for c in result.characters {
         if index < strLen-1 {
             trimmed.append(c)
-            index++
+            index += 1
         }
     }
 
